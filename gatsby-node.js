@@ -1,4 +1,4 @@
-const path = require("path");
+const { resolve } = require("path");
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -24,7 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
   items.forEach((item) => {
     createPage({
       path: `/portfolio/${item.slug}`,
-      component: path.resolve("./src/templates/portfolio-item.tsx"),
+      component: resolve("./src/templates/portfolio-item.tsx"),
       context: {
         slug: item.slug,
       },

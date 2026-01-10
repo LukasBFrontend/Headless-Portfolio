@@ -1,0 +1,48 @@
+@layer components {
+  .header {
+    @apply sticky py-16 px-30 flex justify-start items-center font-bold;
+
+    .profile {
+      @apply absolute right-20 flex items-center gap-12;
+    }
+  }
+
+  .navbar {
+    @apply !text-4xl;
+    ul {
+      @apply flex justify-between items-center gap-26;
+    }
+
+    /* etc... */
+  }
+
+  .footer {
+    @apply fixed bottom-0 py-16 px-30 w-full flex justify-end items-center;
+  }
+
+  .button {
+    @apply bg-blue-500 text-white p-2 rounded-md;
+  }
+
+  .contentful-page {
+    @apply text-center;
+
+    h2 {
+      @apply mb-8;
+    }
+
+    ul {
+      @apply py-4 flex flex-wrap justify-center gap-10;
+    }
+
+    li:has(.image-link) {
+      @apply w-full;
+    }
+  }
+
+  .techstack-item {
+    .image {
+      @apply w-20 h-20 object-contain;
+    }
+  }
+}

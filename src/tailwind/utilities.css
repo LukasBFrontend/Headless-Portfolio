@@ -1,0 +1,9 @@
+@layer utilities {
+  .image-wrapper {
+    @apply !max-w-[400px];
+  }
+
+  .group:hover .image {
+    @apply [filter:brightness(0)_saturate(100%)_invert(27%)_sepia(96%)_saturate(1352%)_hue-rotate(198deg)_brightness(97%)_contrast(96%)];
+  }
+}
