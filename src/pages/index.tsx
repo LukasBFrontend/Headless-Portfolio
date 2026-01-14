@@ -3,11 +3,10 @@ import type { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/Layout";
 
 const IndexPage: React.FC<PageProps> = () => {
-	const car = 2;
 	return (
 		<Layout>
 			<h1>
-      Home
+      			Home
 			</h1>
 		</Layout>
 	);

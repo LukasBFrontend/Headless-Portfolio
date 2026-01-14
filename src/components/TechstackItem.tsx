@@ -1,31 +1,25 @@
 import * as React from "react";
+import Image from "./Image";
 
 type TechstackItemProps = {
-    title: string | null;
+    title: string;
     icon: {
         file: {
             url: string | null;
         } | null;
-    } | null;
+    };
 };
 
 const TechstackItem: React.FC<TechstackItemProps> = ({title, icon}) => {
-	const imageUrl = icon?.file?.url;
+	const imageUrl = icon.file?.url;
     
 	return (
 		<span className="techstack-item inline-block align-middle">
-			{ title && imageUrl ?
-				<img 
-					src={imageUrl}
-					alt={title}
-					className="image"
-				/> :
-				<img 
-					alt="missing image" 
-					className="placeholder-image"
-				/>
-			}
-                
+			<Image 
+				alt={title} 
+				src={imageUrl} 
+				className="image"
+			/> 
 		</span>
 	);
 };

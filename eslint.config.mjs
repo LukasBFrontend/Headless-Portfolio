@@ -20,7 +20,6 @@ export default tseslint.config(
     files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2021,
-      sourceType: "module",
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -36,10 +35,11 @@ export default tseslint.config(
     },
     rules: {
       ...react.configs.recommended.rules,
-      indent: ["error", "tab"],
+      indent: ["error", "spaces"],
       "linebreak-style": ["error", "windows"],
       quotes: ["error", "double"],
       semi: ["error", "always"],
+      "@typescript-eslint/no-require-imports": "off",
     },
     settings: {
       react: {

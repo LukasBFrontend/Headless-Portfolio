@@ -6,7 +6,7 @@
   }
 
   h1 {
-    @apply text-4xl font-bold uppercase;
+    @apply text-4xl font-bold uppercase mb-10;
   }
 
   h2 {
@@ -30,10 +30,17 @@
   }
 
   a:hover {
-    @apply text-blue-500;
+    @apply text-blue-400;
+    p {
+      @apply text-blue-400;
+    }
   }
 
   p {
-    @apply my-3;
+    @apply my-3 text-neutral-300;
   }
+
+  /*   main {
+    @apply overflow-scroll;
+  } */
 }

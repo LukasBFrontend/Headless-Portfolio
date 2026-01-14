@@ -3,27 +3,36 @@ import { graphql, PageProps, type HeadFC } from "gatsby";
 import Layout from "../components/Layout";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
+import Image from "../components/Image";
 
 const PortfolioItemPage: React.FC<PageProps<Queries.PortfolioItemQuery>> = ({data}) => {
 	const item = data.contentfulPortfolioItem;
-	const image = getImage(item.image);
-	const number = 2;
 
+	const image = item  
+		? getImage(item.image)
+		: null
+	;
 
 	return (
 		<Layout>
-			<h1>{item.title}</h1>
-			<p>Slug: {item.slug}</p>
-			{image && (
-				<GatsbyImage 
-					image={image} 
-					alt={item.image.description || item.title} 
-					imgClassName="portfolio-image-img"
-				/>
-			)}
-			{item.description &&(
-				<div>{renderRichText(item.description)}</div>
-			)}
+			{item ? (
+				<>
+					<h1>{item.title}</h1>
+					<div className="portfolio-item">
+						<Image
+							alt={item.image.description || item.title}
+							gatsbyImageData={image}
+						/>
+						<div className="portfolio-item-text">
+							{renderRichText(item.description)}
+						</div>
+					</div>
+				</>
+			) : (
+				<span className="text-red-500">
+					404: Missing portfolio item
+				</span>
+			)}		
 		</Layout>
 	);
 };
@@ -36,10 +45,11 @@ query PortfolioItem($slug: String!) {
     title
     slug
     image {
+	  id
       description
       gatsbyImageData(
         layout: CONSTRAINED,
-        width: 800,
+        width: 1200,
         placeholder: BLURRED
       )
     }
@@ -49,6 +59,12 @@ query PortfolioItem($slug: String!) {
   }
 }`;
 
-export const Head: HeadFC = ({data} : any) => (
-	<title>{data.contentfulPortfolioItem}</title>
+type HeadProps = {
+	contentfulPortfolioItem: {
+		title: string;
+	}
+}
+
+export const Head: HeadFC<HeadProps> = (headProps) => (
+	<title>{headProps.data.contentfulPortfolioItem.title}</title>
 );

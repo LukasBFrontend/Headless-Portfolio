@@ -1,6 +1,6 @@
 @layer components {
   .header {
-    @apply sticky py-16 px-30 flex justify-start items-center font-bold;
+    @apply sticky z-10 top-0 py-16 bg-black/75 font-bold;
 
     .profile {
       @apply absolute right-20 flex items-center gap-12;
@@ -8,9 +8,9 @@
   }
 
   .navbar {
-    @apply !text-4xl;
+    @apply !text-4xl mx-auto w-full max-w-[1600px];
     ul {
-      @apply flex justify-between items-center gap-26;
+      @apply flex justify-start items-start gap-30;
     }
 
     /* etc... */
@@ -25,7 +25,7 @@
   }
 
   .contentful-page {
-    @apply text-center;
+    @apply w-full max-w-[1600px] text-center;
 
     h2 {
       @apply mb-8;
@@ -38,6 +38,51 @@
     li:has(.image-link) {
       @apply w-full;
     }
+  }
+
+  .portfolio-item {
+    @apply rounded-lg flex flex-col text-center !bg-white/4;
+
+    h1 {
+      @apply mb-8;
+    }
+
+    p {
+      @apply !text-neutral-300;
+    }
+
+    .image-wrapper,
+    .image {
+      @apply !rounded-ee-none !rounded-es-none w-full!;
+    }
+  }
+
+  .portfolio-item-card {
+    @apply transition-all my-12 p-8 rounded-lg flex flex-col text-center !bg-white/4;
+
+    h3 {
+      @apply mb-8;
+    }
+
+    .image-wrapper {
+      @apply !max-h-[30vh];
+    }
+
+    .portfolio-item-text {
+      @apply pb-0;
+    }
+  }
+
+  .portfolio-item-card:hover {
+    @apply cursor-pointer -translate-y-2 ring-8 ring-blue-500;
+
+    p {
+      @apply !text-neutral-100;
+    }
+  }
+
+  .portfolio-item-text {
+    @apply p-8;
   }
 
   .techstack-item {

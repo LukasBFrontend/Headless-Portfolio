@@ -1,6 +1,6 @@
 @layer utilities {
   .image-wrapper {
-    @apply !max-w-[400px];
+    @apply rounded-md;
   }
 
   .group:hover .image {

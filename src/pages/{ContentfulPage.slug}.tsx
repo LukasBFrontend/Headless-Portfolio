@@ -17,8 +17,13 @@ type Reference = NonNullable<NonNullable<QueryReferences>[number]>
 const Page: React.FC<PageProps<Queries.ContentfulPageBySlugQuery>> = ({data}) => {
 	const page = data.contentfulPage;
 	const body = page?.body;
+	
 	const references: Reference[] = body?.references
-		? Array.from(body.references).filter((ref): ref is Reference => ref !== null)
+		? Array
+			.from(body.references)
+			.filter(
+				(ref): ref is Reference => ref !== null
+			)
 		: []
     ;
 
@@ -56,17 +61,21 @@ const Page: React.FC<PageProps<Queries.ContentfulPageBySlugQuery>> = ({data}) =>
 
 	return (
 		<Layout>
-			<article className="contentful-page">
-				{body ? 
+			
+				{body ? (
 					renderRichText<Reference>(
 						{ 
 							raw: body.raw, 
 							references
 						}, 
 						options
-					) :
-					<div className="text-red-500">Could not fetch page content</div> }            
-			</article>
+					)
+				) : (
+					<div className="text-red-500">
+						404: Missing page content.
+					</div>
+				)}             
+	
 		</Layout>
 	);
 };
@@ -109,6 +118,12 @@ query ContentfulPageBySlug($slug: String!) {
 }
 `;
 
-export const Head: HeadFC<Queries.ContentfulPageBySlugQuery> = ({data}) => (
-	<title>{data.contentfulPage?.title || "Missing Page Title"}</title>
+type HeadProps = {
+	contentfulPage : {
+		title: string;
+	};
+}
+
+export const Head: HeadFC<HeadProps> = (headProps) => (
+	<title>{headProps.data.contentfulPage.title}</title>
 );

@@ -1,32 +1,25 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import { renderRichText } from "gatsby-source-contentful/rich-text";
+import PortfolioItemCard from "../components/PortfolioItemCard";
 
 const PortfolioPage: React.FC<PageProps<Queries.PortfolioQuery>> = ({data}) => {
 	const items = data.allContentfulPortfolioItem.nodes;
 	return (
 		<Layout>
-			<h1>Portfolio</h1>
-			<ul className="w-full">
+			<h1>Results:{items.length}</h1>
+			<div className="w-full">
 				{items.map((item) => (
-					<li key={item.id}>
-						{item.title && (
-							<>
-								<Link to={`/portfolio/${item.slug || "/"}`}>
-									{item.title}
-								</Link>
-								{item.description && (
-									<p>
-										{renderRichText(item.description)}
-									</p>
-								)}
-							</>
-						)}
-					</li>
+					<PortfolioItemCard
+						key={item.id}
+						title={item.title}
+						slug={item.slug}
+						image={item.image}
+						description={item.description}
+					/>
 				))}
-			</ul>
+			</div>
 		</Layout>
 	);
 };
@@ -41,6 +34,9 @@ query Portfolio {
                 description {
                     raw
                 }
+				image {
+					gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 1200)
+				}
             }
         }
     }
