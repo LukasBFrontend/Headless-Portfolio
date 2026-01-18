@@ -2,8 +2,8 @@
   .header {
     @apply sticky z-10 top-0 py-16 bg-black/75 font-bold;
 
-    .profile {
-      @apply absolute right-20 flex items-center gap-12;
+    @media (max-width: 1024px) {
+      @apply py-8;
     }
   }
 
@@ -11,20 +11,60 @@
     @apply !text-4xl mx-auto w-full max-w-[1600px];
 
     ul {
-      @apply flex justify-start items-start gap-30;
+      @apply px-12 flex justify-start items-center gap-30;
+
+      @media (max-width: 1780px) {
+        @apply justify-center;
+      }
+
+      @media (max-width: 1024px) {
+        @apply justify-around gap-0;
+      }
     }
   }
 
   .footer {
-    @apply fixed bottom-0 py-16 px-30 w-full flex justify-end items-center;
+    @apply max-w-[1600px] mx-auto py-16 px-11 w-full flex justify-end items-center;
+
+    @media (max-width: 1780px) {
+      @apply px-30;
+    }
+
+    @media (max-width: 1024px) {
+      @apply justify-center;
+
+      .profile > .image-wrapper {
+        @apply hidden!;
+      }
+    }
+  }
+
+  .profile-link {
+    @media (max-width: 1024px) {
+      .profile-link-text {
+        @apply hidden;
+      }
+
+      .image-wrapper {
+        @apply inline-block!;
+      }
+    }
+  }
+
+  .profile {
+    @apply flex items-center gap-4;
+
+    @media (max-width: 1024px) {
+      @apply justify-self-center;
+    }
   }
 
   .button {
-    @apply bg-blue-500 text-white p-2 rounded-md;
+    @apply bg-green-700 rounded-md p-2 text-2xl text-white;
   }
 
   .contentful-page {
-    @apply w-full max-w-[1600px] text-center;
+    @apply w-full max-w-[1504px] text-center;
 
     h2 {
       @apply my-8;

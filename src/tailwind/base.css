@@ -40,7 +40,13 @@
     @apply my-3 text-neutral-300;
   }
 
-  /*   main {
-    @apply overflow-scroll;
-  } */
+  main {
+    @apply px-32 py-6 flex flex-col justify-center items-center gap-10;
+  }
+
+  @media (max-width: 1024) {
+    :root {
+      font-size: 14px;
+    }
+  }
 }

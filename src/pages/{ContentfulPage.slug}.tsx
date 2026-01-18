@@ -95,7 +95,7 @@ query ContentfulPageBySlug($slug: String!) {
           __typename
           text
           image {
-            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 100)
+            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 100, formats: [AUTO, WEBP])
           }
           url
         }
@@ -104,7 +104,7 @@ query ContentfulPageBySlug($slug: String!) {
           contentful_id
           __typename
           icon {
-            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 50)
+            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 50, formats: [AUTO, WEBP])
             filename
             file {
               url

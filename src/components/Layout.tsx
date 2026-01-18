@@ -10,7 +10,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
 	return (
 		<div>
 			<Header/>
-			<main className="px-32 py-6 flex flex-col justify-center items-center gap-10">
+			<main>
 				<article className="contentful-page">
 					{children}
 				</article>

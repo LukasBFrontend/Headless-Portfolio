@@ -1,7 +1,7 @@
 import * as React from "react";
-import { graphql, PageProps, type HeadFC } from "gatsby";
+import { graphql, Link, PageProps, type HeadFC } from "gatsby";
 import Layout from "../components/Layout";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { getImage } from "gatsby-plugin-image";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 import Image from "../components/Image";
 
@@ -17,7 +17,12 @@ const PortfolioItemPage: React.FC<PageProps<Queries.PortfolioItemQuery>> = ({dat
 		<Layout>
 			{item ? (
 				<>
-					<h1>{item.title}</h1>
+					<div className="relative">
+						<Link to="/portfolio" className="button absolute left-0">Back</Link>
+						<h1 >
+							{item.title}
+						</h1>
+					</div>
 					<div className="portfolio-item">
 						<Image
 							alt={item.image.description || item.title}
@@ -50,7 +55,8 @@ query PortfolioItem($slug: String!) {
       gatsbyImageData(
         layout: CONSTRAINED,
         width: 1200,
-        placeholder: BLURRED
+        placeholder: BLURRED,
+        formats: [AUTO, WEBP]
       )
     }
     description {
@@ -66,5 +72,5 @@ type HeadProps = {
 }
 
 export const Head: HeadFC<HeadProps> = (headProps) => (
-	<title>{headProps.data.contentfulPortfolioItem.title}</title>
+	<title>Lukas Portfolio - {headProps.data.contentfulPortfolioItem.title}</title>
 );

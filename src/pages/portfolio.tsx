@@ -35,7 +35,7 @@ query Portfolio {
                     raw
                 }
 				image {
-					gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 1200)
+					gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 1200, formats: [AUTO, WEBP])
 				}
             }
         }
@@ -44,4 +44,4 @@ query Portfolio {
 
 export default PortfolioPage;
 
-export const Head: HeadFC = () => <title>Portfolio Page</title>;
+export const Head: HeadFC = () => <title>Lukas Portfolio</title>;

@@ -4,9 +4,13 @@ import * as React from "react";
 const Footer = () => (
 	<footer className="footer">
 			<div className="profile">
-		<h1>
-			Lukas
-		</h1>
+		<p>
+			Lukas Bråkenhielm
+			<br />
+			072-152 67 57
+			<br />
+			brakenhielmlukas@gmail.com
+		</p>
 		<StaticImage 
 			src="../images/profile.png"
 			alt="profile picture"
